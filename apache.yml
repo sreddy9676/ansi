@@ -13,6 +13,15 @@
     - name: deploy web application 
       copy:
         src: index.html
-        dest: /var/www/html/ 
+        dest: /var/www/html/
+    - name: configure http port
+      copy: 
+        src: httpd.conf 
+        dest: /etc/httpd/conf 
+    - name: restart apache
+      service: 
+        name: httpd
+        state: restarted
+         
       
 
